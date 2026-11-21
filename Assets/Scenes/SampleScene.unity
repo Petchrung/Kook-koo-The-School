@@ -49943,7 +49943,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259157094}
   m_Mesh: {fileID: 8528152961162909216, guid: 215ba444200d9bd47a335a878ed37d12, type: 3}
-<<<<<<< HEAD
 --- !u!1001 &259481892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50005,7 +50004,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f44f8aad3b732d46a9aa4162a7443d5, type: 3}
-=======
 --- !u!1 &259228907
 GameObject:
   m_ObjectHideFlags: 0
@@ -50038,7 +50036,6 @@ Transform:
   - {fileID: 330585546}
   m_Father: {fileID: 32162132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 93ba5f7318e7ff0d2eab9920e60f2c20a7fea9a6
 --- !u!4 &260034119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7725669708710614962, guid: 7f44f8aad3b732d46a9aa4162a7443d5, type: 3}
@@ -63824,19 +63821,11 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 930256671}
-=======
   m_LocalPosition: {x: -0.017, y: -0.7, z: 0.13}
   m_LocalScale: {x: 1.587642, y: 1.6859426, z: 1.5165992}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 259228908}
->>>>>>> 93ba5f7318e7ff0d2eab9920e60f2c20a7fea9a6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -417251,10 +417240,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-<<<<<<< HEAD
-=======
   - {fileID: 32162132}
->>>>>>> 93ba5f7318e7ff0d2eab9920e60f2c20a7fea9a6
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1191834673}
@@ -417267,9 +417253,6 @@ SceneRoots:
   - {fileID: 2136718199}
   - {fileID: 882262894}
   - {fileID: 687578572}
-<<<<<<< HEAD
   - {fileID: 961801525}
   - {fileID: 930256671}
-=======
   - {fileID: 342370836}
->>>>>>> 93ba5f7318e7ff0d2eab9920e60f2c20a7fea9a6
