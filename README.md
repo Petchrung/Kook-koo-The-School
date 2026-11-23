@@ -1,1 +1,1 @@
-# Haunted-School-The-Last-Bell
+# Kook-koo The School
