@@ -9,8 +9,13 @@ public class DoorController : MonoBehaviour
     public float openSpeed = 2f;
 
     [Header("Interaction")]
-    public float interactDistance = 0.3f;
+    public float interactDistance = 2f;
     public KeyCode interactKey = KeyCode.E;
+    public float holdDuration = 1.5f;
+
+    [Header("Progress Bar")]
+    public float barWidth = 250f;
+    public float barHeight = 20f;
 
     private Transform player;
     private Quaternion closedRotation;
@@ -19,6 +24,8 @@ public class DoorController : MonoBehaviour
     private bool isOpen = false;
     private bool isMoving = false;
     private bool playerNearby = false;
+
+    private float holdTimer = 0f;
 
     void Start()
     {
@@ -46,10 +53,25 @@ public class DoorController : MonoBehaviour
 
         playerNearby = distance <= interactDistance;
 
-        if (playerNearby && !isMoving &&
-            Input.GetKeyDown(interactKey))
+        if (!playerNearby || isMoving)
         {
-            StartCoroutine(ToggleDoor());
+            holdTimer = 0f;
+            return;
+        }
+
+        if (Input.GetKey(interactKey))
+        {
+            holdTimer += Time.deltaTime;
+
+            if (holdTimer >= holdDuration)
+            {
+                holdTimer = 0f;
+                StartCoroutine(ToggleDoor());
+            }
+        }
+        else
+        {
+            holdTimer = 0f;
         }
     }
 
@@ -84,26 +106,55 @@ public class DoorController : MonoBehaviour
         if (!playerNearby || isMoving)
             return;
 
+        GUIStyle textStyle = new GUIStyle();
+
+        textStyle.fontSize = 22;
+        textStyle.fontStyle = FontStyle.Bold;
+        textStyle.normal.textColor = Color.white;
+        textStyle.alignment = TextAnchor.MiddleCenter;
+
         string message = isOpen
-            ? "[ E ] กดเพื่อปิดประตู"
-            : "[ E ] กดเพื่อเปิดประตู";
-
-        GUIStyle style = new GUIStyle();
-
-        style.fontSize = 22;
-        style.fontStyle = FontStyle.Bold;
-        style.normal.textColor = Color.white;
-        style.alignment = TextAnchor.MiddleCenter;
+            ? "กด E ค้าง เพื่อปิดประตู"
+            : "กด E ค้าง เพื่อเปิดประตู";
 
         GUI.Label(
             new Rect(
                 Screen.width / 2 - 200,
-                Screen.height - 130,
+                Screen.height - 180,
                 400,
-                50
+                40
             ),
             message,
-            style
+            textStyle
         );
+
+        // Progress Bar
+        float progress = Mathf.Clamp01(
+            holdTimer / holdDuration
+        );
+
+        float x = Screen.width / 2 - barWidth / 2;
+        float y = Screen.height - 130;
+
+        GUI.color = Color.black;
+
+        GUI.DrawTexture(
+            new Rect(x, y, barWidth, barHeight),
+            Texture2D.whiteTexture
+        );
+
+        GUI.color = Color.green;
+
+        GUI.DrawTexture(
+            new Rect(
+                x + 2,
+                y + 2,
+                (barWidth - 4) * progress,
+                barHeight - 4
+            ),
+            Texture2D.whiteTexture
+        );
+
+        GUI.color = Color.white;
     }
 }
